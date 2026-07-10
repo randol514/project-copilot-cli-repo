@@ -1,19 +1,45 @@
-# React + TypeScript + Vite
+# project-copilot-cli-test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![build](https://img.shields.io/github/actions/workflow/status/OWNER/REPO/ci.yml?branch=main&label=build)](https://github.com/OWNER/REPO/actions)
+[![version](https://img.shields.io/badge/version-0.0.0-blue.svg)]
+[![license](https://img.shields.io/github/license/OWNER/REPO)](https://github.com/OWNER/REPO)
 
-Currently, two official plugins are available:
+Plantilla mínima para una aplicación React + TypeScript usando Vite. Incluye configuración básica de ESLint y scripts comunes para desarrollo y build.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Estado actual
+- Paquete: `project-copilot-cli-test` (private)
+- Versión: 0.0.0
+
+## Instalación
+
+Instalar dependencias y arrancar el servidor de desarrollo:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Para construir la versión de producción:
+
+```bash
+pnpm build
+pnpm preview
+```
+
+## Guía rápida
+- La guía de uso extendida está en `guide.txt` (verla para pasos adicionales y notas del autor).
+
+## Notas para badges
+- Reemplaza OWNER/REPO en los badges por el propietario y el repositorio reales para que muestren información dinámica.
+- El badge de build asume que existe un workflow `ci.yml` en `.github/workflows/`. Si no existe, crea un workflow o actualiza la URL del badge.
 
 ## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+El React Compiler no está habilitado en esta plantilla por su impacto en rendimiento. Para activarlo, ver: https://react.dev/learn/react-compiler/installation
 
-## Expanding the ESLint configuration
+## Expansión de ESLint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Si desarrollas una aplicación de producción, considera habilitar reglas de ESLint con comprobación de tipos (type-checked). Un ejemplo de configuración se muestra abajo.
 
 ```js
 export default defineConfig([
@@ -21,30 +47,30 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
+      // Otras configuraciones...
 
-      // Remove tseslint.configs.recommended and replace with this
+      // Reemplazar configuración por defecto de tseslint por una con comprobación de tipos
       tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
+      // Alternativa más estricta
       tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
+      // Opcional: reglas estilísticas
       tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
+      // Otras configuraciones...
     ],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
+      // otras opciones...
     },
   },
 ])
 
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+También puedes instalar `eslint-plugin-react-x` y `eslint-plugin-react-dom` para reglas específicas de React:
 
 ```js
 // eslint.config.js
@@ -56,10 +82,8 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
-      // Enable lint rules for React
+      // Otras configuraciones...
       reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
       reactDom.configs.recommended,
     ],
     languageOptions: {
@@ -67,7 +91,7 @@ export default defineConfig([
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
+      // otras opciones...
     },
   },
 ])
